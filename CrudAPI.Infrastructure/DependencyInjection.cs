@@ -1,5 +1,5 @@
-﻿using CrudAPI.Domain.Common.Interfaces.IRepositories;
-using CrudAPI.Domain.Entities;
+﻿using CrudAPI.Application.Common.Interfaces.IRepositories;
+using CrudAPI.Infrastructure.Persistence;
 using CrudAPI.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,9 +13,8 @@ namespace CrudAPI.Infrastructure
         {
             #region ConnectionString
 
-            //services.AddSingleton<DbConnectionFactory>(x => new DbConnectionFactory(configuration.GetConnectionString("LibraryDB")));
-            services.AddDbContext<AppDB>(options => options.UseNpgsql(configuration.GetConnectionString("LibraryDB")));
-
+            services.AddDbContext<EfDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("LibraryDB")));
+            
             #endregion
 
             #region Repositories

@@ -1,4 +1,4 @@
-﻿using CrudAPI.Domain.Common.Interfaces.IRepositories;
+﻿using CrudAPI.Application.Common.Interfaces.IRepositories;
 using MediatR;
 
 namespace CrudAPI.Application.Features.Commands.Books.DeleteBook

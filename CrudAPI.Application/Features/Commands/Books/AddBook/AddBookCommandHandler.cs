@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CrudAPI.Domain.Common.Interfaces.IRepositories;
+using CrudAPI.Application.Common.Interfaces.IRepositories;
 using CrudAPI.Domain.Entities;
 using MediatR;
 

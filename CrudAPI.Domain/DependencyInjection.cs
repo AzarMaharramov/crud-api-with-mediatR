@@ -7,7 +7,7 @@ namespace CrudAPI.Domain
         public static IServiceCollection AddDomain(this IServiceCollection services)
         {
             /*
-            services.AddDbContext<AppDB>(options =>
+            services.AddDbContext<AppDbContext>(options =>
                                          options.UseNpgsql(configuration.GetConnectionString("LibraryDB")));
             */
             return services;

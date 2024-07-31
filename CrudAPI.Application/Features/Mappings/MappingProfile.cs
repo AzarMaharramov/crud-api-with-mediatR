@@ -2,7 +2,6 @@
 using CrudAPI.Application.DTOs.Request.Books;
 using CrudAPI.Application.DTOs.Response.Books;
 using CrudAPI.Domain.Entities;
-using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace CrudAPI.Application.Features.Mappings
 {
@@ -12,14 +11,15 @@ namespace CrudAPI.Application.Features.Mappings
         {
             #region Book
 
-            CreateMap<AddBookReqDto, Book>().ReverseMap(); ;
-            CreateMap<EditBookReqDto, Book>().ReverseMap(); ;
-
-            CreateMap<Book, GetBookResDto>()
-                //.ForMember(src => { src.BookGenre = src })
+            CreateMap<AddBookReqDto, Book>().ReverseMap();
+            CreateMap<EditBookReqDto, Book>()
+                .ForMember(dest => dest.Updated, 
+                            opt => opt.MapFrom
+                           (src => DateTime.UtcNow))
                 .ReverseMap();
 
-            CreateMap<Book, GetBooksResDto>().ReverseMap(); ;
+            CreateMap<Book, GetBookResDto>().ReverseMap();
+            CreateMap<Book, GetBooksResDto>().ReverseMap();
 
             #endregion
         }

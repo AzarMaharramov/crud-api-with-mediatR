@@ -5,6 +5,6 @@ namespace CrudAPI.Application.Features.Commands.Books.AddBook
 {
     public class AddBookCommand : IRequest<Unit>
     {
-        public AddBookReqDto Request { get; set; }
+        public AddBookReqDto Request { get; set; } = null!;
     }
 }

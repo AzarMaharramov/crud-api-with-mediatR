@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CrudAPI.Domain.Common.Interfaces.IRepositories;
+using CrudAPI.Application.Common.Interfaces.IRepositories;
 using CrudAPI.Domain.Entities;
 using MediatR;
 
@@ -18,7 +18,9 @@ namespace CrudAPI.Application.Features.Commands.Books.EditBook
 
         public async Task<Unit> Handle(EditBookCommand request, CancellationToken cancellationToken)
         {
-            var book = _mapper.Map<Book>(request.Request);
+            Book? book = await _bookRepository.Get(request.Request.Id);
+
+            _mapper.Map(book, request.Request);
             await _bookRepository.Update(book);
 
             return Unit.Value;
